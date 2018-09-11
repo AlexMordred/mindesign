@@ -10,4 +10,14 @@ class Category extends Model
     {
         return $this->hasMany('App\Category', 'parent');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Product');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'alias';
+    }
 }

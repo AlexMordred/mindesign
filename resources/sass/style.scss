@@ -3,6 +3,13 @@ html, body {
 }
 
 h1 { margin-top: 0; }
+h4 { margin-top: 0; }
+
+a { 
+    color: #41b800;
+    text-decoration: none;
+}
+a:hover { color: #49cf00; }
 
 #app {
     height: 100%;
@@ -20,7 +27,25 @@ h1 { margin-top: 0; }
     margin-right: 1rem;
 }
 
+.category a.active::before, .subcategory a.active::before {
+    content: '>';
+}
+
 .subcategory {
     margin: 0.25rem 0;
     padding-left: 1.5rem;
+}
+
+.product-card {
+    background: #f0f0f0;
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+}
+
+.product-card-image {
+    padding-right: 1rem;
+}
+.product-card-image img {
+    width: 10rem;
 }

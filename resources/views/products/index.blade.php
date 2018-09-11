@@ -1,25 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>20 самых популярных товаров</h1>
+    <h1>Товары в категории {{ $selectedCategory->title }}</h1>
 
-    @foreach ($popular as $product)
-    <div>
+    @foreach ($products as $product)
         <div class="product-card">
             @if ($product->image)
                 <div class="product-card-image">
                     <img src="{{ $product->image }}" alt="{{ $product->title }}">
                 </div>
             @endif
-        
+
             <div>
-                <h4>{{ $loop->index + 1 }}. {{ $product->title }} ({{ $product->popularity }} продаж)</h4>
-        
+                <h4>{{ $product->title }}</h4>
+
                 {{ $product->description }}
-        
+                
                 <p>Цена: {{ $product->price }} руб.</p>
             </div>
         </div>
-    </div>
     @endforeach
+
+    {{ $products->links() }}
 @endsection

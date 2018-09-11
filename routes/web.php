@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'PagesController@index')->name('home');
+
+Route::get('/products/{category}', 'ProductsController@index')->name('products');

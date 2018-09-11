@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\View;
 
 class ComposerServiceProvider extends ServiceProvider
 {
+    protected static $categories;
+
     /**
      * Bootstrap services.
      *
@@ -16,11 +18,13 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $categories = Category::where('parent', null)
-                ->with('children')
-                ->get();
+            if (!self::$categories) {
+                self::$categories = Category::where('parent', null)
+                    ->with('children')
+                    ->get();
+            }
 
-            $view->with('categories', $categories);
+            $view->with('categories', self::$categories);
         });
     }
 
