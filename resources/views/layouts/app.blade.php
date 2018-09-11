@@ -11,7 +11,15 @@
 </head>
 <body>
     <div id="app">
-        @yield('content')
+        <div class="content">
+            <div class="flex-1 sidenav">
+                @include('layouts._sidenav')
+            </div>
+        
+            <div class="flex-3">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
     <script src="/js/app.js"></script>
