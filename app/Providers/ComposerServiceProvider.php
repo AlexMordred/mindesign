@@ -16,7 +16,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $categories = Category::where('parent', 0)
+            $categories = Category::where('parent', null)
                 ->with('children')
                 ->get();
 

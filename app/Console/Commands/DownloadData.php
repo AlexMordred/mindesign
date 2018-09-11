@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\DB;
+use App\Category;
 
 class DownloadData extends Command
 {
@@ -111,6 +112,11 @@ class DownloadData extends Command
         $this->insertData('offers', $offers);
         $this->insertData('categories', $categories);
         $this->insertData('category_product', $categoryProducts);
+
+        // Конвертируем '0' FK для категорий в NULL
+        Category::where('parent', 0)->update([
+            'parent' => null
+        ]);
     }
 
     /**
