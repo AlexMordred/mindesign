@@ -21,4 +21,20 @@ class ProductsController extends Controller
             ? response()->json($data)
             : view('products.index', $data);
     }
+
+    public function search($query)
+    {
+        $products = Product::where('title', 'LIKE', "%{$query}%")
+            ->orWhere('description', 'LIKE', "%{$query}%")
+            ->paginate(10);
+
+        $data = [
+            'products' => $products,
+            'searchQuery' => $query,
+        ];
+
+        return request()->wantsJson()
+            ? response()->json($data)
+            : view('products.index', $data);
+    }
 }

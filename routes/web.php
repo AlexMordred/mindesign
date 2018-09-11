@@ -13,4 +13,5 @@
 
 Route::get('/', 'PagesController@index')->name('home');
 
+Route::get('/search/products/{query}', 'ProductsController@search')->name('products.search');
 Route::get('/products/{category}', 'ProductsController@index')->name('products');

@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Товары в категории {{ $selectedCategory->title }}</h1>
+    @if (isset($searchQuery))
+        <h1>
+            Результаты поиска по запросу "{{ $searchQuery }}" ({{ $products->total() }})
+        </h1>
+    @else
+        <h1>Товары в категории {{ $selectedCategory->title }}</h1>
+    @endif
 
     @foreach ($products as $product)
         <div class="product-card">

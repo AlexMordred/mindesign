@@ -1,6 +1,6 @@
 require('./bootstrap');
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('v-search-form', require('./components/SearchForm.vue'));
 
 new Vue({
     el: '#app'
